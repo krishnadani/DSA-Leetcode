@@ -1,21 +1,21 @@
 class Solution {
     public int strStr(String haystack, String needle) {
-        int n = haystack.length();
-        int m = needle.length();
+        char[] a=haystack.toCharArray();
+        char[] b=needle.toCharArray();
 
-        for(int i = 0; i <= n - m; i++) {
+        int k=needle.length();
 
-            int j = 0;
-
-            while(j < m && haystack.charAt(i + j) == needle.charAt(j)) {
-                j++;
+        for(int i=0 ; i<=a.length-k ; i++){
+            int l=0;
+            char[] temp = new char[k];
+            for(int j=i ; j<=(i+k)-1 ; j++){
+                temp[l]=a[j];
+                l++;
             }
-
-            if(j == m) {
-                return i;  // full match found
+            if(Arrays.equals(b,temp)){
+                return i;
             }
         }
-
         return -1;
     }
 }
